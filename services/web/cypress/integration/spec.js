@@ -4,7 +4,7 @@ describe('Heading', () => {
   });
 
   it('has the correct <h1>', () => {
-    cy.contains('h1', 'Great success!')
+    cy.contains('h1', 'No great success!')
   });
 });
 

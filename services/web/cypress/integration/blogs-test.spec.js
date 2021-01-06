@@ -1,4 +1,4 @@
-const posts = require('../../src/routes/blog/_posts');
+import posts from "../../src/routes/blog/_posts";
 describe('Blog posts', () => {
   beforeEach(() => {
    cy.visit('http://localhost:3000/blog')

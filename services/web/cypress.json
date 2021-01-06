@@ -1,0 +1,5 @@
+{
+  "componentFolder": "cypress/components",
+  "experimentalComponentTesting": true,
+  "projectId": "o3im17"
+}

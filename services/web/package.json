@@ -11,8 +11,8 @@
     "deploy:firebase": "npm run deploy --prefix firebase",
     "deploy:clean": "rm -fr __sapper__ ./firebase/public",
     "deploy": "run-s deploy:clean export deploy:firebase",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:open": "NODE_ENV=test cypress open",
+    "cy:run": "NODE_ENV=test cypress run"
   },
   "dependencies": {
     "compression": "^1.7.1",

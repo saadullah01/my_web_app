@@ -11,6 +11,7 @@ import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
+const test = mode === 'test';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) =>
@@ -83,7 +84,7 @@ export default {
 					generate: 'ssr',
 					hydratable: true
 				},
-				emitCss: false
+				emitCss: !test
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),

@@ -32,7 +32,8 @@ export default {
 				compilerOptions: {
 					dev,
 					hydratable: true
-				}
+				},
+				emitCss: !test
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -84,7 +85,7 @@ export default {
 					generate: 'ssr',
 					hydratable: true
 				},
-				emitCss: !test
+				emitCss: false
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),

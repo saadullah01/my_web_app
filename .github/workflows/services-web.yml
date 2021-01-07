@@ -15,7 +15,7 @@ jobs:
       - name: Bootstrap all services
         run: npm run bootstrap
       - name: Run e2e tests
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           install: false
           record: true

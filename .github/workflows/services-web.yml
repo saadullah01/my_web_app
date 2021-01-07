@@ -19,7 +19,6 @@ jobs:
         with:
           install: false
           record: true
-          run: npm i @cypress/github-action@2.3.1
           start: npm run dev
           wait-on: "http://localhost:3000"
           working-directory: services/web

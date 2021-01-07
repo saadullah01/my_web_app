@@ -20,7 +20,7 @@ jobs:
           install: false
           record: true
           start: npm run dev
-          wait-on: " http://localhost:3000 "
+          wait-on: "http://localhost:3000"
           working-directory: services/web
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

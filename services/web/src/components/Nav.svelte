@@ -1,4 +1,5 @@
 <script>
+	import AuthNavItem from "./auth-nav-item.svelte";
 	export let segment;
 </script>
 
@@ -12,6 +13,10 @@
 	ul {
 		margin: 0;
 		padding: 0;
+	}
+
+	li:last-child {
+		float: right;
 	}
 
 	/* clearfix */
@@ -56,5 +61,7 @@
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">blog</a></li>
+	
+		<li><AuthNavItem/></li>
 	</ul>
 </nav>

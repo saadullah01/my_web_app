@@ -1,3 +1,10 @@
+<script>
+  import { currentUser } from "../stores/user";
+  const signOut = () => {
+    firebase.auth().signOut();
+  };
+</script>
+
 <style>
   a {
     /* Matches the styles in Nav.svelte */
@@ -7,4 +14,8 @@
   }
 </style>
 
-<a href="/auth/login">Sign In</a>
+{#if $currentUser}
+  <a on:click={signOut} href>Sign Out</a>
+{:else}
+  <a href="/auth/login">Sign In</a>
+{/if}

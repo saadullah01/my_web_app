@@ -5,7 +5,7 @@
 
   onMount(() => {
     if (!$currentUser) {
-      goto("/auth/login")
+      goto("/auth/login?redirect=admin")
     }
   });
 </script>

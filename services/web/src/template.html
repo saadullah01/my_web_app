@@ -49,6 +49,12 @@
 	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js">
 		var firebaseAuthUi = new firebaseui.auth.AuthUI(firebase.auth());
 		var db = firebase.firestore();
+		if (location.hostname === "localhost") {
+			db.settings({
+				host: "localhost:8080",
+				ssl: false
+			});
+		}
 	</script>
 </body>
 </html>

@@ -4,6 +4,7 @@
   "description": "The web service's Firebase project.",
   "main": "index.js",
   "scripts": {
+    "dev": "npm run build --prefix functions && firebase emulators:start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "firebase:login": "firebase login --no-localhost",
     "deploy": "firebase deploy",

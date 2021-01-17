@@ -9,7 +9,7 @@
     "firebase:login": "firebase login --no-localhost",
     "deploy": "firebase deploy",
     "postinstall": "npm install --prefix functions"
- },
+  },
   "author": "Saad Ullah, @saadullah01",
   "license": "ISC",
   "devDependencies": {

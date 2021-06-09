@@ -1,5 +1,3 @@
 {
-  "componentFolder": "cypress/components",
-  "experimentalComponentTesting": true,
-  "projectId": "o3im17"
+    "baseUrl": "http://localhost:3000/"
 }

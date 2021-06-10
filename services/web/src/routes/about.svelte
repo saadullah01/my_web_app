@@ -1,7 +1,8 @@
 <script>
+  import ContactCard from "../components/contact-card.svelte";
   import FeatureToggle from "../components/feature-toggle.svelte";
   import { FEATURE_TOGGLES } from "../feature-toggles";
-  import ContactCard from "../components/contact-card.svelte";
+
   const erinLindford = {
     name: "Erin Lindford",
     avatarSrc: "https://randomuser.me/api/portraits/women/17.jpg",
@@ -10,7 +11,7 @@
     phone: "(555) 765-4321"
   }
 </script>
-<ContactCard {...erinLindford} />
+
 <svelte:head>
 	<title>About</title>
 </svelte:head>
@@ -22,3 +23,5 @@
 <FeatureToggle name={FEATURE_TOGGLES.vipWelcome.name}>
   <p>Some people see this, others don't!</p>
 </FeatureToggle>
+
+<ContactCard {...erinLindford} />

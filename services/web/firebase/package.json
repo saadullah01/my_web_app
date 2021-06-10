@@ -4,15 +4,14 @@
   "description": "The web service's Firebase project.",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run build --prefix functions && firebase emulators:start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "firebase:login": "firebase login --no-localhost",
-    "deploy": "firebase deploy --only hosting,firestore",
-    "postinstall": "npm install --prefix functions"
+    "deploy": "firebase deploy",
+    "dev": "firebase serve"
   },
-  "author": "Saad Ullah, @saadullah01",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "firebase-tools": "^9.1.0"
+    "firebase-tools": "^9.6.1"
   }
 }

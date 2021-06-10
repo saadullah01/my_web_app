@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "firebase:login": "firebase login --no-localhost",
     "deploy": "firebase deploy",
-    "dev": "firebase emulators:start",
+    "dev": "npm run build --prefix functions && firebase emulators:start",
     "postinstall": "npm install --prefix functions"
   },
   "author": "",

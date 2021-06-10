@@ -8,8 +8,6 @@ import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-import sveltePreprocess from "svelte-preprocess";
-import tailwindcss from "tailwindcss";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -21,27 +19,23 @@ const onwarn = (warning, onwarn) =>
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
 
-const sveltePreprocessOptions = sveltePreprocess({
-  postcss: {
-    plugins: [tailwindcss],
-  },
-});
-
 export default {
 	client: {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
 				compilerOptions: {
 					dev,
 					hydratable: true
 				},
-                                preprocess: sveltePreprocessOptions,
 				emitCss: !test
 			}),
 			url({
@@ -85,8 +79,11 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': false,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
 				compilerOptions: {
@@ -94,7 +91,6 @@ export default {
 					generate: 'ssr',
 					hydratable: true
 				},
-                                preprocess: sveltePreprocessOptions,
 				emitCss: false
 			}),
 			url({
@@ -108,7 +104,6 @@ export default {
 			commonjs()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
@@ -119,13 +114,15 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			commonjs(),
 			!dev && terser()
 		],
-
 		preserveEntrySignatures: false,
 		onwarn,
 	}

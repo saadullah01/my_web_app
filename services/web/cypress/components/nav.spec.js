@@ -6,7 +6,7 @@ import { mount } from "cypress-svelte-unit-test";
 describe("Nav", () => {
   it("shows all nav items", () => {
     mount(Nav);
-    cy.get("nav li").should("have.length", 4);
+    cy.get("nav li").should("have.length", 3);
   });
   
   it("highlights the home nav item", () => {

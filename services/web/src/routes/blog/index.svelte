@@ -5,14 +5,14 @@
 				.collection("posts")
 				.get()
 				.then(querySnapshot => {
-					const posts = querySnapshot.docs.map(doc => ({
-						slug: doc.id,
-						...doc.data()
-					}));
-					return {
-						posts
-					};
-				});
+				const posts = querySnapshot.docs.map(doc => ({
+					slug: doc.id,
+					...doc.data()
+				}));
+				return {
+					posts
+				};
+			});
 		}
 		return null;
 	}

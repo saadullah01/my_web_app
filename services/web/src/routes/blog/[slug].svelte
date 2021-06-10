@@ -2,7 +2,7 @@
 	export async function preload({ params }) {
 		if (typeof window !== "undefined") {
 			const doc = await
-			window.db.collection("posts").doc(params.slug).get();
+			window.db.collection("posts").doc( params.slug).get();
 			if (doc.exists) {
 				return { post: doc.data() }
 			} else {
@@ -53,7 +53,7 @@
 </style>
 
 <svelte:head>
-	<title>{post ? post.title : ''}</title>
+  <title>{post ? post.title : ''}</title>
 </svelte:head>
 
 {#if post}

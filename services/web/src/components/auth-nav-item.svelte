@@ -1,17 +1,18 @@
 <script>
   import { currentUser } from "../stores/user";
+
   const signOut = () => {
     firebase.auth().signOut();
   };
 </script>
 
 <style>
-  a {
-    /* Matches the styles in Nav.svelte */
-    text-decoration: none;
-    padding: 1em 0.5em;
-    display: block;
-  }
+    a {
+      /* Matches the styles in Nav.svelte */
+      text-decoration: none;
+      padding: 1em 0.5em;
+      display: block;
+    }
 </style>
 
 {#if $currentUser}

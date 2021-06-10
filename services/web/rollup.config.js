@@ -22,9 +22,9 @@ const onwarn = (warning, onwarn) =>
 	onwarn(warning);
 
 const sveltePreprocessOptions = sveltePreprocess({
-  postcss: {
-    plugins: [tailwindcss],
-  },
+	postcss: {
+		plugins: [tailwindcss],
+	},
 });
 
 export default {
@@ -33,16 +33,19 @@ export default {
 		output: config.client.output(),
 		plugins: [
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
 				compilerOptions: {
 					dev,
 					hydratable: true
 				},
-                                preprocess: sveltePreprocessOptions,
-				emitCss: !test
+				emitCss: !test,
+				preprocess: sveltePreprocessOptions
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -85,8 +88,11 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': false,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
 				compilerOptions: {
@@ -94,8 +100,8 @@ export default {
 					generate: 'ssr',
 					hydratable: true
 				},
-                                preprocess: sveltePreprocessOptions,
-				emitCss: false
+				emitCss: false,
+				preprocess: sveltePreprocessOptions
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -108,7 +114,6 @@ export default {
 			commonjs()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
@@ -119,13 +124,15 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			commonjs(),
 			!dev && terser()
 		],
-
 		preserveEntrySignatures: false,
 		onwarn,
 	}

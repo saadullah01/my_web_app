@@ -1,1 +1,1 @@
-export { default as crossPostToDevto } from "./cross-post-to-devto";
+export {default as crossPostToDevto} from "./cross-post-to-devto";

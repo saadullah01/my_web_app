@@ -9,5 +9,3 @@ typings/
 node_modules/
 
 .runtimeconfig.json
-
-!**/*.test.js
